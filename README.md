@@ -1,1 +1,1 @@
-# live-cursors-app
+simple script for cursor tracking
