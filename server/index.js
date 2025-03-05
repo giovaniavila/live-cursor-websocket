@@ -1,10 +1,10 @@
-const http = require("http");
-const { WebSocketServer } = require("ws");
+import { createServer } from "http";
+import { WebSocketServer } from "ws";
 
-const url = require("url");
-const uuidv4 = require("uuid").v4;
+import { parse } from "url";
+import { v4 as uuidv4 } from "uuid";
 
-const server = http.createServer();
+const server = createServer();
 const wsServer = new WebSocketServer({ server });
 const port = 8000;
 
@@ -38,7 +38,7 @@ const handleClose = (uuid) => {
 };
 
 wsServer.on("connection", (connection, request) => {
-  const { username } = url.parse(request.url, true).query;
+  const { username } = parse(request.url, true).query;
   const uuid = uuidv4();
   console.log(username);
   console.log(uuid);
